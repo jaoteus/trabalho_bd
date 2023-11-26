@@ -159,3 +159,13 @@ WHERE nome LIKE '%motorola%' AND descricao  LIKE '%smartphone%' AND preco < 4000
 -- seleciona id, nome, descricao, preco da tabela produtos, em seguida iremos filtrar os produtos que possuem "motorola" como nome e "descricao" como smartphone, e filtrar quem tem o preço menor que 4000.
 
 -- consulta 22
+SELECT id, nome, estoque 
+FROM produtos
+WHERE nome like '%Motorola%' AND estoque > 10;
+-- esta consulta seleciona o id, nome e estoque da tabela produtos onde o nome é "motorola" e o estoque é maior que 10.
+
+-- consulta 23
+SELECT SUM(quantidade)
+FROM pedidos
+WHERE data BETWEEN '2023-02-01' AND '2023-07-01';
+-- Ira somar a quantidade de pedidos feitos entre o dia 01 de fevereiro e dia 01 de julho.
