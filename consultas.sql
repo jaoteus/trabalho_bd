@@ -34,3 +34,66 @@ WHERE produtos.nome LIKE '%Motorola%';
 -- Esta consulta usa duas junções internas (INNER JOIN) para retornar o nome e o endereço dos clientes que compraram o produto "Motorola". A consulta primeiro seleciona todos os pedidos, e depois usa o operador LIKE para retornar apenas os pedidos do produto "Motorola". Em seguida, a consulta usa a segunda junção interna para retornar o nome e o endereço dos clientes associados a esses pedidos.
 
 -- consulta 6
+SELECT produtos.nome, SUM(pedidos.quantidade) AS quantidade_vendida
+FROM pedidos
+INNER JOIN produtos
+ON pedidos.produto_id = produtos.id
+GROUP BY produtos.nome;
+-- esta consulta usa uma junção interna (INNER JOIN) e uma função de agregação (SUM) para retornar o nome do produto e a quantidade vendida para cada cliente.
+
+-- consulta 7
+SELECT clientes.nome, SUM(pedidos.quantidade * produtos.preco) AS valor_total
+FROM pedidos
+INNER JOIN clientes
+ON pedidos.cliente_id = clientes.id
+INNER JOIN produtos
+ON pedidos.produto_id = produtos.id
+GROUP BY clientes.nome;
+-- Esta consulta usa duas junções internas (INNER JOIN) e uma função de agregação (SUM) para retornar o nome do cliente e a quantidade total gasta em pedidos.
+
+-- consulta 8
+SELECT produtos.nome, MAX(pedidos.quantidade) AS quantidade_vendida
+FROM pedidos
+INNER JOIN produtos
+ON pedidos.produto_id = produtos.id
+GROUP BY produtos.nome
+ORDER BY quantidade_vendida DESC
+LIMIT 1;
+-- Esta consulta usa uma junção interna (INNER JOIN), uma função de agregação (MAX) e uma ordenação (ORDER BY) para retornar o produto mais vendido. 
+
+-- consulta 9
+SELECT AVG(pedidos.quantidade) AS media_pedidos
+FROM pedidos;
+-- Esta consulta usa uma função de agregação (avg) para retornar a média de pedidos por cliente. A consulta primeiro seleciona todos os pedidos, e depois usa a função AVG para calcular a média da quantidade de pedidos por cliente.
+
+-- consulta 10
+SELECT *
+FROM pedidos
+ORDER BY data;
+-- Esta consulta usa uma ordenação (ORDER BY) para retornar todos os pedidos, ordenados por data.
+
+-- consulta 11
+SELECT *
+FROM clientes
+ORDER BY nome;
+-- Esta consulta usa uma ordenação (ORDER BY) para retornar todos os clientes, ordenados por nome.
+
+-- consulta 12
+SELECT produtos.nome, produtos.preco
+FROM produtos
+ORDER BY preco DESC;
+-- Esta consulta usa uma ordenação (ORDER BY) para retornar os produtos mais caros, ordenados por preço.
+
+-- consulta 13
+SELECT clientes.nome, produtos.nome, pedidos.quantidade, produtos.preco
+FROM pedidos
+INNER JOIN clientes
+ON pedidos.cliente_id = clientes.id
+INNER JOIN produtos
+ON pedidos.produto_id = produtos.id
+WHERE produtos.preco > 5000
+ORDER BY produtos.preco DESC;
+-- Esta consulta usa uma junção interna (INNER JOIN), uma cláusula WHERE e uma ordenação (ORDER BY) para retornar os clientes que compraram um produto com um preço acima do valor 5000.
+
+-- consulta 14
+
