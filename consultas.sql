@@ -130,3 +130,32 @@ INNER JOIN produtos
 ON pedidos.produto_id = produtos.id
 WHERE produtos.descricao  LIKE '%samsung%';
 -- Essa consulta retorna o nome do cliente, a data do pedido, o nome do produto e o preço para todos os pedidos feito com a descrição "samsung".
+
+-- consulta 18
+SELECT *
+FROM clientes
+LEFT JOIN pedidos
+ON clientes.id = pedidos.cliente_id
+WHERE pedidos.id IS NULL;
+-- Consulta para retornar todos os clientes que não fizeram nenhum pedido.
+
+-- consulta 19
+SELECT *
+FROM produtos
+WHERE estoque < 10;
+-- Consulta para retornar todos os produtos que estão com estoque abaixo de 10 unidades.
+
+-- consulta 20
+SELECT id, nome, descricao
+FROM produtos
+WHERE nome LIKE '%samsung%' AND descricao  LIKE '%smartphone%'
+ORDER BY id DESC;
+-- Seleciona id, nome e descricao da tabela produtos, em seguida iremos filtrar os produtos que possuem "samsung" como nome e "descricao" como smartphone, ordenando todos em ordem decrescente
+
+-- consulta 21
+SELECT id, nome, descricao, preco
+FROM produtos
+WHERE nome LIKE '%motorola%' AND descricao  LIKE '%smartphone%' AND preco < 4000;
+-- seleciona id, nome, descricao, preco da tabela produtos, em seguida iremos filtrar os produtos que possuem "motorola" como nome e "descricao" como smartphone, e filtrar quem tem o preço menor que 4000.
+
+-- consulta 22
