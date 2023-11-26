@@ -1,3 +1,5 @@
+-- !!!! NENHUM DESSES DADOS SÃO REAIS, APENAS UMA SIMULAÇÃO
+
 -- consulta 1:
 SELECT id, nome, telefone
 FROM clientes

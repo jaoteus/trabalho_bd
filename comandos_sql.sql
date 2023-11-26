@@ -1,3 +1,5 @@
+-- !!!! NENHUM DESSES DADOS SÃO REAIS, APENAS UMA SIMULAÇÃO
+
 -- Criar banco de dados
 create database vendas;
 
