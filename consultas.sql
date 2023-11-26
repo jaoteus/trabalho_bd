@@ -96,4 +96,37 @@ ORDER BY produtos.preco DESC;
 -- Esta consulta usa uma junção interna (INNER JOIN), uma cláusula WHERE e uma ordenação (ORDER BY) para retornar os clientes que compraram um produto com um preço acima do valor 5000.
 
 -- consulta 14
+SELECT clientes.nome, produtos.preco
+FROM pedidos
+INNER JOIN clientes
+ON pedidos.cliente_id = clientes.id
+INNER JOIN produtos
+ON pedidos.produto_id = produtos.id
+WHERE produtos.preco BETWEEN 5000 AND 9000;
+-- Esta consulta usa uma junção interna (INNER JOIN) para retornar todos os clientes que compraram um produto que o preço esta entre 5000 e 9000.
 
+-- consulta 15
+SELECT nome, e_mail
+FROM clientes
+WHERE e_mail LIKE '%@gmail.com' OR e_mail LIKE '%@hotmail.com' or e_mail  LIKE '%@email.com%';
+-- Essa consulta retorna o nome e o e-mail de todos os clientes cujo e-mail termine com o domínio "gmail.com",  "hotmail.com" ou "email.com".
+
+-- consulta 16
+SELECT clientes.nome, produtos.nome, pedidos.quantidade
+FROM clientes
+INNER JOIN pedidos
+ON clientes.id = pedidos.cliente_id
+INNER JOIN produtos
+ON pedidos.produto_id = produtos.id
+WHERE pedidos.data > '2023-11-01';
+-- Essa consulta retorna o nome do cliente, o nome do produto e a quantidade do pedido para todos os pedidos realizados após 01 de novembro de 2023.
+
+-- consulta 17
+SELECT clientes.nome, pedidos.data, produtos.nome, produtos.preco
+FROM clientes
+INNER JOIN pedidos
+ON clientes.id = pedidos.cliente_id
+INNER JOIN produtos
+ON pedidos.produto_id = produtos.id
+WHERE produtos.descricao  LIKE '%samsung%';
+-- Essa consulta retorna o nome do cliente, a data do pedido, o nome do produto e o preço para todos os pedidos feito com a descrição "samsung".
